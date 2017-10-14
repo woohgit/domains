@@ -1,0 +1,68 @@
+- name: Create wooh.hu domain
+  digital_ocean_domain_record:
+    oauth_token: "{{ oauth_token }}"
+    domain: "{{ domain }}"
+    data: "{{ otaku_ip }}"
+    create_domain: yes
+
+- name: Create MX records
+  digital_ocean_domain_record:
+    oauth_token: "{{ oauth_token }}"
+    domain: "{{ domain }}"
+    priority: "{{ item.priority }}"
+    data: "{{ item.data }}"
+    type: MX
+  loop:
+    - {priority: 10, data: "aspmx.l.google.com"}
+    - {priority: 20, data: "alt1.aspmx.l.google.com"}
+    - {priority: 20, data: "alt2.aspmx.l.google.com"}
+    - {priority: 30, data: "aspmx2.googlemail.com"}
+    - {priority: 30, data: "aspmx3.googlemail.com"}
+    - {priority: 30, data: "aspmx4.googlemail.com"}
+    - {priority: 30, data: "aspmx5.googlemail.com"}
+
+- name: Create vpn.wooh.hu
+  digital_ocean_domain_record:
+    oauth_token: "{{ oauth_token }}"
+    domain: "{{ domain }}"
+    name: vpn
+    type: A
+    data: "{{ vpn_ip }}"
+
+- name: Create CNAME reconds
+  digital_ocean_domain_record:
+    oauth_token: "{{ oauth_token }}"
+    domain: "{{ domain }}"
+    name: "{{ item }}"
+    data: wooh.hu
+    type: CNAME
+  with_items:
+    - eni
+    - munkacsy
+    - www
+    - wedding
+    - otaku
+    - pomodoro
+
+- name: Create url.wooh.hu
+  digital_ocean_domain_record:
+    oauth_token: "{{ oauth_token }}"
+    domain: "{{ domain }}"
+    name: url
+    data: ghs.googlehosted.com
+    type: CNAME
+
+- name: Create blog.wooh.hu hosted on github
+  digital_ocean_domain_record:
+    oauth_token: "{{ oauth_token }}"
+    domain: "{{ domain }}"
+    name: blog
+    data: woohgit.github.io
+    type: CNAME
+
+- name: Create spf TXT record
+  digital_ocean_domain_record:
+    oauth_token: "{{ oauth_token }}"
+    domain: "{{ domain }}"
+    data: "v=spf1 include:_spf.google.com ~all"
+    type: TXT

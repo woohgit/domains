@@ -1,0 +1,5 @@
+---
+otaku_ip: 146.185.183.251
+vpn_ip: 128.199.126.74
+domain: wooh.hu
+oauth_token: "{{ lookup('lastpass', 'root-digitalocean-token', field='notes') }}"
