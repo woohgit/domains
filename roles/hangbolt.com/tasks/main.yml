@@ -1,8 +1,9 @@
-- name: Create wooh.hu domain
+- name: Create hangbolt.com domain
   digital_ocean_domain_record:
     oauth_token: "{{ oauth_token }}"
     domain: "{{ domain }}"
-    data: "{{ otaku_ip }}"
+    data: 146.185.183.251
+    type: A
     create_domain: yes
 
 - name: Create MX records
@@ -21,48 +22,29 @@
     - {priority: 30, data: "aspmx4.googlemail.com"}
     - {priority: 30, data: "aspmx5.googlemail.com"}
 
-- name: Create vpn.wooh.hu
+- name: Create google site verification TXT record
   digital_ocean_domain_record:
     oauth_token: "{{ oauth_token }}"
     domain: "{{ domain }}"
-    name: vpn
-    type: A
-    data: "{{ vpn_ip }}"
-
-- name: Create CNAME reconds
-  digital_ocean_domain_record:
-    oauth_token: "{{ oauth_token }}"
-    domain: "{{ domain }}"
-    name: "{{ item }}"
-    data: wooh.hu
-    type: CNAME
-  loop:
-    - eni
-    - munkacsy
-    - www
-    - wedding
-    - otaku
-    - pomodoro
-
-- name: Create url.wooh.hu
-  digital_ocean_domain_record:
-    oauth_token: "{{ oauth_token }}"
-    domain: "{{ domain }}"
-    name: url
-    data: ghs.googlehosted.com
-    type: CNAME
-
-- name: Create blog.wooh.hu hosted on github
-  digital_ocean_domain_record:
-    oauth_token: "{{ oauth_token }}"
-    domain: "{{ domain }}"
-    name: blog
-    data: woohgit.github.io
-    type: CNAME
+    data: "google-site-verification=isv9th9Fm5LB6JYElRRFfMe1FTqa8oSeBhKb-k2l73c"
+    type: TXT
 
 - name: Create spf TXT record
   digital_ocean_domain_record:
     oauth_token: "{{ oauth_token }}"
     domain: "{{ domain }}"
-    data: "v=spf1 include:_spf.google.com ~all"
+    data: "v=spf1 mx ip4:146.185.183.251 a:otaku.wooh.hu ?all"
     type: TXT
+
+- name: Create aliases
+  digital_ocean_domain_record:
+    oauth_token: "{{ oauth_token }}"
+    domain: "{{ domain }}"
+    data: wooh.hu
+    name: "{{ item }}"
+    type: CNAME
+  loop:
+    - shop
+    - test
+    - www
+
