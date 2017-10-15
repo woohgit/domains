@@ -1,9 +1,10 @@
-- name: Create wooh.hu domain
+- name: Create wooh.hu default A
   digital_ocean_domain_record:
     oauth_token: "{{ oauth_token }}"
     domain: "{{ domain }}"
     data: "{{ otaku_ip }}"
-    create_domain: yes
+    type: A
+    name: "@"
 
 - name: Create MX records
   digital_ocean_domain_record:

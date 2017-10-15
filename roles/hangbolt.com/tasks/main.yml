@@ -2,9 +2,9 @@
   digital_ocean_domain_record:
     oauth_token: "{{ oauth_token }}"
     domain: "{{ domain }}"
+    name: "@"
     data: 146.185.183.251
     type: A
-    create_domain: yes
 
 - name: Create MX records
   digital_ocean_domain_record:
