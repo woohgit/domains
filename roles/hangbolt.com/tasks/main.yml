@@ -40,9 +40,10 @@
   digital_ocean_domain_record:
     oauth_token: "{{ oauth_token }}"
     domain: "{{ domain }}"
-    data: wooh.hu
+    data: "{{ domain }}"
     name: "{{ item }}"
     type: CNAME
+    force_update: yes
   loop:
     - shop
     - test

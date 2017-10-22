@@ -6,7 +6,7 @@
     type: A
     name: "@"
 
-- name: Create MX records
+- name: Create google MX records
   digital_ocean_domain_record:
     oauth_token: "{{ oauth_token }}"
     domain: "{{ domain }}"
@@ -30,7 +30,7 @@
     type: A
     data: "{{ vpn_ip }}"
 
-- name: Create CNAME reconds
+- name: Create CNAME records
   digital_ocean_domain_record:
     oauth_token: "{{ oauth_token }}"
     domain: "{{ domain }}"
