@@ -67,3 +67,11 @@
     domain: "{{ domain }}"
     data: "v=spf1 include:_spf.google.com ~all"
     type: TXT
+
+- name: Create A record for fra1-01
+  digital_ocean_domain_record:
+    oauth_token: "{{ oauth_token }}"
+    domain: "{{ domain }}"
+    data: 138.68.107.217
+    name: fra1-01
+    type: A
