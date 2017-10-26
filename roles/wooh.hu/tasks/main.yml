@@ -2,9 +2,10 @@
   digital_ocean_domain_record:
     oauth_token: "{{ oauth_token }}"
     domain: "{{ domain }}"
-    data: "{{ otaku_ip }}"
+    data: 46.101.115.175
     type: A
     name: "@"
+    force_update: yes
 
 - name: Create google MX records
   digital_ocean_domain_record:
@@ -40,10 +41,10 @@
   loop:
     - eni
     - munkacsy
-    - www
-    - wedding
     - otaku
     - pomodoro
+    - wedding
+    - www
 
 - name: Create url.wooh.hu
   digital_ocean_domain_record:
@@ -72,6 +73,6 @@
   digital_ocean_domain_record:
     oauth_token: "{{ oauth_token }}"
     domain: "{{ domain }}"
-    data: 138.68.107.217
+    data: 46.101.115.175
     name: fra1-01
     type: A
