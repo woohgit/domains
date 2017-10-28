@@ -5,7 +5,6 @@
     data: 46.101.115.175
     type: A
     name: "@"
-    force_update: yes
 
 - name: Create google MX records
   digital_ocean_domain_record:
@@ -23,14 +22,6 @@
     - {priority: 30, data: "aspmx4.googlemail.com"}
     - {priority: 30, data: "aspmx5.googlemail.com"}
 
-- name: Create vpn.wooh.hu
-  digital_ocean_domain_record:
-    oauth_token: "{{ oauth_token }}"
-    domain: "{{ domain }}"
-    name: vpn
-    type: A
-    data: "{{ vpn_ip }}"
-
 - name: Create CNAME records
   digital_ocean_domain_record:
     oauth_token: "{{ oauth_token }}"
@@ -39,11 +30,7 @@
     data: wooh.hu
     type: CNAME
   loop:
-    - eni
-    - munkacsy
-    - otaku
     - pomodoro
-    - wedding
     - www
 
 - name: Create url.wooh.hu

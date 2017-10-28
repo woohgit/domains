@@ -33,7 +33,7 @@
   digital_ocean_domain_record:
     oauth_token: "{{ oauth_token }}"
     domain: "{{ domain }}"
-    data: "v=spf1 mx ip4:146.185.183.251 a:otaku.wooh.hu ?all"
+    data: "v=spf1 mx ip4:46.101.115.175 a:fra1-01.wooh.hu ?all"
     type: TXT
 
 - name: Create aliases
@@ -43,7 +43,6 @@
     data: "{{ domain }}"
     name: "{{ item }}"
     type: CNAME
-    force_update: yes
   loop:
     - shop
     - test
