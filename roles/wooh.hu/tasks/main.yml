@@ -1,4 +1,4 @@
-- name: Create wooh.hu default A
+- name: wooh.hu default A
   digital_ocean_domain_record:
     oauth_token: "{{ oauth_token }}"
     domain: "{{ domain }}"
@@ -6,7 +6,7 @@
     type: A
     name: "@"
 
-- name: Create google MX records
+- name: Google MX records
   digital_ocean_domain_record:
     oauth_token: "{{ oauth_token }}"
     domain: "{{ domain }}"
@@ -22,7 +22,7 @@
     - {priority: 30, data: "aspmx4.googlemail.com"}
     - {priority: 30, data: "aspmx5.googlemail.com"}
 
-- name: Create CNAME records
+- name: CNAME records
   digital_ocean_domain_record:
     oauth_token: "{{ oauth_token }}"
     domain: "{{ domain }}"
@@ -33,7 +33,7 @@
     - pomodoro
     - www
 
-- name: Create url.wooh.hu
+- name: url.wooh.hu
   digital_ocean_domain_record:
     oauth_token: "{{ oauth_token }}"
     domain: "{{ domain }}"
@@ -41,7 +41,7 @@
     data: ghs.googlehosted.com
     type: CNAME
 
-- name: Create blog.wooh.hu hosted on github
+- name: blog.wooh.hu hosted on github
   digital_ocean_domain_record:
     oauth_token: "{{ oauth_token }}"
     domain: "{{ domain }}"
@@ -49,11 +49,18 @@
     data: woohgit.github.io
     type: CNAME
 
-- name: Create spf TXT record
+- name: SPF verification record
   digital_ocean_domain_record:
     oauth_token: "{{ oauth_token }}"
     domain: "{{ domain }}"
     data: "v=spf1 include:_spf.google.com ~all"
+    type: TXT
+
+- name: Keybase verification TXT record
+  digital_ocean_domain_record:
+    oauth_token: "{{ oauth_token }}"
+    domain: "{{ domain }}"
+    data: "keybase-site-verification=CbPU5ogtUu2wewVzdwYpB6Ol12f9gFsfAqog6zZ7HYM"
     type: TXT
 
 - name: Create A record for fra1-01
