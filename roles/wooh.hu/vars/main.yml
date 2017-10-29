@@ -1,3 +1,0 @@
----
-domain: wooh.hu
-oauth_token: "{{ lookup('lastpass', 'root-digitalocean-token', field='notes') }}"

@@ -1,4 +1,7 @@
 - hosts: localhost
+  vars:
+    oauth_token: "{{ lookup('lastpass', 'root-digitalocean-token', field='notes') }}"
   roles:
-    - wooh.hu
-    - hangbolt.com
+    - { role: budapestguidehungary.com, domain: budapestguidehungary.com, tags: [ 'budapestguidehungary.com' ] }
+    - { role: hangbolt.com, domain: hangbolt.com, tags: [ 'hangbolt.com' ] }
+    - { role: wooh.hu,  domain: wooh.hu, tags: [ 'wooh.hu' ] }

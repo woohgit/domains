@@ -1,3 +1,0 @@
----
-domain: hangbolt.com
-oauth_token: "{{ lookup('lastpass', 'root-digitalocean-token', field='notes') }}"

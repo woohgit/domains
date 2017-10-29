@@ -3,7 +3,7 @@
     oauth_token: "{{ oauth_token }}"
     domain: "{{ domain }}"
     name: "@"
-    data: 146.185.183.251
+    data: 46.101.115.175
     type: A
 
 - name: Create MX records
