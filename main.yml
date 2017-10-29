@@ -3,5 +3,7 @@
     oauth_token: "{{ lookup('lastpass', 'root-digitalocean-token', field='notes') }}"
   roles:
     - { role: budapestguidehungary.com, domain: budapestguidehungary.com, tags: [ 'budapestguidehungary.com' ] }
+    - { role: bulldogspecialista.hu, domain: bulldogspecialista.hu, tags: [ 'bulldogspecialista.hu' ] }
+    - { role: celloviolin.com, domain: celloviolin.com, tags: [ 'celloviolin.com' ] }
     - { role: hangbolt.com, domain: hangbolt.com, tags: [ 'hangbolt.com' ] }
     - { role: wooh.hu,  domain: wooh.hu, tags: [ 'wooh.hu' ] }

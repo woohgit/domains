@@ -1,0 +1,33 @@
+- name: Create default A
+  digital_ocean_domain_record:
+    oauth_token: "{{ oauth_token }}"
+    domain: "{{ domain }}"
+    name: "@"
+    data: 46.101.115.175
+    type: A
+
+- name: Create MX records
+  digital_ocean_domain_record:
+    oauth_token: "{{ oauth_token }}"
+    domain: "{{ domain }}"
+    priority: "{{ item.priority }}"
+    data: "{{ item.data }}"
+    type: MX
+  loop:
+    - { priority: 10, data: "aspmx.l.google.com" }
+    - { priority: 20, data: "alt1.aspmx.l.google.com" }
+    - { priority: 20, data: "alt2.aspmx.l.google.com" }
+    - { priority: 30, data: "aspmx2.googlemail.com" }
+    - { priority: 30, data: "aspmx3.googlemail.com" }
+    - { priority: 30, data: "aspmx4.googlemail.com" }
+    - { priority: 30, data: "aspmx5.googlemail.com" }
+
+- name: Create aliases
+  digital_ocean_domain_record:
+    oauth_token: "{{ oauth_token }}"
+    domain: "{{ domain }}"
+    data: "{{ domain }}"
+    name: "{{ item }}"
+    type: CNAME
+  loop:
+    - www
